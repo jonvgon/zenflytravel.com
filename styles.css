@@ -1,0 +1,103 @@
+/* Reseta margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.main-section {
+    background: url('assets/images/024.jpg') no-repeat center top/cover;
+    height: 75vh; /* 85% da altura da viewport para expandir mais na vertical */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    width: 500px; /* Aumenta o tamanho da logo */
+    margin-bottom: 0px; /* Espaçamento adicional para empurrar a logo para baixo */
+}
+
+/* Estilo do título 1 */
+.title {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 30px;
+    font-family: "Verdana", sans-serif;
+    line-height: 1.3em;
+    FONT-WEIGHT: 400;
+} /* Adiciona a fonte Verdana */
+
+/* Estilo do título 2 */
+.subtitle {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 40px;
+    font-family: "Verdana", sans-serif;
+    FONT-WEIGHT: 400;
+    line-height: 1.3em;
+}
+
+
+/* Estilo do botão */
+.cta-button {
+    position: relative;
+    font-size: 1em;
+    padding: 14px 39px; /* Botão mais largo */
+    background-color: #aca174; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s linear; /* Transição suave */
+    outline: none;
+    text-decoration: none; /* Remove o contorno ao clicar */
+}
+
+/* Efeito de hover */
+.cta-button:hover {
+    background-color: #000; /* Cor de fundo do botão ao passar o mouse */
+}
+
+/* Seta */
+.cta-button::after {
+    content: "\2192"; /* Código Unicode para uma seta apontando para a direita */
+    position: absolute;
+    right: 15px; /* Ajusta a posição da seta para o lado direito do botão */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+}
+
+
+.images-section {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 10vh; /* Reduzir ainda mais a altura para 10% da viewport */
+}
+
+.responsive-image {
+    width: 50%; /* Diminuir o tamanho das imagens para 50% */
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .images-section {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .responsive-image {
+        width: 15%; /* Diminuir o tamanho das imagens para 15% no desktop */
+        margin-bottom: 0;
+    }
+}
