@@ -10,6 +10,7 @@ body, html {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Evita overflow horizontal */
 }
 
 .main-section {
@@ -21,10 +22,13 @@ body, html {
     align-items: center;
     text-align: center;
     padding-bottom: 2rem; /* Espaço adicional para o rodapé */
+    width: 100%; /* Garante que a seção principal ocupe toda a largura */
+    padding: 0 1rem; /* Adiciona padding lateral para garantir que o conteúdo não toque as bordas da tela */
 }
 
 .logo {
-    width: 500px; /* Aumenta o tamanho da logo */
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho da logo */
     margin-bottom: 0px; /* Espaçamento adicional para empurrar a logo para baixo */
 }
 
@@ -57,7 +61,7 @@ body, html {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
     width: 100%;
     max-width: 600px;
@@ -159,7 +163,6 @@ body, html {
     border-color: var(--primary-hover-color);
 }
 
-
 .rounded {
     border-radius: 0.25rem;
 }
@@ -174,15 +177,16 @@ body, html {
 
 .images-section {
     background-color: white;
-    padding: 20px;
+    padding: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 10vh; /* Reduzir ainda mais a altura para 10% da viewport */
+    width: 100%; /* Garante que a seção ocupe toda a largura */
 }
 
 .responsive-image {
-    width: 50%; /* Diminuir o tamanho das imagens para 50% */
+    width: 100%;
+    max-width: 500px; /* Limita o tamanho das imagens */
     margin-bottom: 20px;
 }
 
@@ -193,16 +197,14 @@ body, html {
     }
 
     .responsive-image {
-        width: 15%; /* Diminuir o tamanho das imagens para 15% no desktop */
+        width: 15%; /* Ajusta o tamanho das imagens para 15% no desktop */
         margin-bottom: 0;
     }
 }
 
 footer {
-   
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem; /* Reduz o padding para diminuir o tamanho do rodapé */
+    /* Adiciona uma cor de fundo para o rodapé */
 }
-
-
