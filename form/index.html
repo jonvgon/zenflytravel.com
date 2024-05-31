@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenfly - Passagens Aéreas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showCotacaoSection() {
+            document.getElementById('initial-form').style.display = 'none';
+            document.getElementById('final-form').style.display = 'block';
+        }
+
+        function showFinalForm() {
+            document.getElementById('final-form').style.display = 'none';
+            document.getElementById('cotacao-form').style.display = 'block';
+        }
+
+        function submitFinalForm() {
+            // Aqui você pode adicionar qualquer lógica de envio do formulário final
+            // Após enviar o formulário final, mostrar o formulário de cotação de passageiros
+            document.getElementById('final-form').style.display = 'none';
+            document.getElementById('passenger-form').style.display = 'block';
+        }
+
+        function submitPassengerForm() {
+            // Aqui você pode adicionar qualquer lógica de envio do formulário de passageiros
+            // Após enviar o formulário de passageiros, redirecionar para a página com o mesmo formulário
+            window.location.href = "mesma_pagina.html"; // Altere "mesma_pagina.html" para o nome da sua página atual
+        }
+    </script>
+</head>
+<body>
+    <div class="main-section">
+        <img src="assets/images/teste.png" alt="Logo" class="logo">
+        <h1 class="title">Bem-vindo(a) viajante!</h1>
+        <h2 class="subtitle">Preencha as informações para receber um atendimento</h2>
+        
+        <!-- Formulário Inicial -->
+        <div id="initial-form" class="form-container">
+            <div class="grid sm:grid-cols-5 gap-4 w-full bg-white/25 backdrop-blur-md p-6 rounded border border-primary border-solid z-10">
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Nome</h2>
+                    <input name="name" id="name" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="Nome" value="">
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">E-mail</h2>
+                    <input name="email" id="email" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="E-mail" value="">
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Whatsapp</h2>
+                    <input name="whatsapp" id="whatsapp" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="(11) 90000-0000" value="">
+                </div>
+                <div class="relative flex flex-col gap-1"></div>
+                <button class="btn btn-primary rounded self-end text-white mb-1" onclick="showCotacaoSection()">Próximo</button>
+            </div>
+        </div>
+        
+        <!-- Formulário 2 -->
+        <div id="final-form" class="form-container" style="display: none;">
+            <div class="grid sm:grid-cols-2 gap-4 w-full bg-white/25 backdrop-blur-md p-6 rounded border border-primary border-solid z-10">
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Origem</h2>
+                    <input name="origin" id="origin" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="Digite a origem" value="">
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Destino</h2>
+                    <input name="destination" id="destination" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="Digite o destino" value="">
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Data da Viagem</h2>
+                    <input type="date" name="departure-date" id="departure-date" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Data do Retorno</h2>
+                    <input type="date" name="return-date" id="return-date" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                </div>
+                <button class="btn btn-primary rounded self-end text-white mb-1" onclick="submitFinalForm()">ENVIAR</button>
+            </div>
+        </div>
+
+        <!-- Formulário 3: Cotação de Passageiros -->
+        <div id="passenger-form" class="form-container" style="display: none;">
+            <div class="grid sm:grid-cols-2 gap-4 w-full bg-white/25 backdrop-blur-md p-6 rounded border border-primary border-solid z-10">
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Adultos</h2>
+                    <select name="adults" id="adults" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                        <option value="">Selecione</option>
+                        <option value="1">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <!-- Adicione opções de 1 a 10 para adultos conforme necessário -->
+                    </select>
+                </div>
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Bebês (de 0 a 2 anos)</h2>
+                    <select name="infants" id="infants" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                        <option value="">Selecione</option>
+                        <option value="1">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+
+                        </select>
+                    </div>
+                    <div class="relative flex flex-col gap-1">
+                        <h2 class="text-xs font-normal text-white text-left">Crianças (até 12 anos)</h2>
+                        <select name="children" id="children" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                            <option value="">Selecione</option>
+                            <option value="1">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <!-- Adicione opções de 1 a 10 para crianças conforme necessário -->
+                        </select>
+                    </div>
+                    <button class="btn btn-primary rounded self-end text-white mb-1" onclick="submitPassengerForm()">Solicitar atendimento</button>
+                </div>
+            </div>
+            <!-- Formulário de Cotação -->
+            <div id="cotacao-form" class="form-container" style="display: none;">
+                <!-- Conteúdo do formulário de cotação -->
+            </div>
+        </div>
+        
+        <div class="images-section">
+            <img src="assets/images/lg1.png" alt="Imagem 1" class="responsive-image">
+            <img src="assets/images/lg3.png" alt="Imagem 2" class="responsive-image">
+            <img src="assets/images/lg2.png" alt="Imagem 3" class="responsive-image">
+        </div>
+        
+        <footer class="footer">
+            <!-- Rodapé conteúdo aqui -->
+        </footer>
+    </body>
+    </html>

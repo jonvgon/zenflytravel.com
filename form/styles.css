@@ -1,0 +1,208 @@
+/* Reseta margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-section {
+    background: url('assets/images/024.jpg') no-repeat center top/cover;
+    flex: 1; /* Permite que a seção principal cresça para preencher o espaço disponível */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem; /* Espaço adicional para o rodapé */
+}
+
+.logo {
+    width: 500px; /* Aumenta o tamanho da logo */
+    margin-bottom: 0px; /* Espaçamento adicional para empurrar a logo para baixo */
+}
+
+/* Estilo do título 1 */
+.title {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 30px;
+    font-family: "Verdana", sans-serif;
+    line-height: 1.3em;
+    font-weight: 400;
+}
+
+/* Estilo do título 2 */
+.subtitle {
+    font-size: 15px;
+    color: white;
+    margin-bottom: 40px;
+    font-family: "Verdana", sans-serif;
+    font-weight: 400;
+    line-height: 1.3em;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--primary-color);
+    z-index: 10;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.gap-1 {
+    gap: 0.25rem;
+}
+
+.text-xs {
+    font-size: 0.75rem;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.input {
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    color: #4a5568; /* text-gray-600 */
+}
+
+.max-h-10 {
+    max-height: 2.5rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.border-primary {
+    border-color: var(--primary-color);
+}
+
+:root {
+    --primary-color: #aca174;
+    --primary-hover-color: #000; /* Define a cor preta para o hover */
+}
+
+/* Botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+    border-color: var(--primary-hover-color);
+}
+
+
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.self-end {
+    align-self: flex-end;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+
+.images-section {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 10vh; /* Reduzir ainda mais a altura para 10% da viewport */
+}
+
+.responsive-image {
+    width: 50%; /* Diminuir o tamanho das imagens para 50% */
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .images-section {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .responsive-image {
+        width: 15%; /* Diminuir o tamanho das imagens para 15% no desktop */
+        margin-bottom: 0;
+    }
+}
+
+footer {
+   
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+
