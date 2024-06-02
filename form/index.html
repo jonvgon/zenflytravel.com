@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenfly - Passagens Aéreas</title>
@@ -17,16 +18,82 @@
         }
 
         function submitFinalForm() {
-            // Aqui você pode adicionar qualquer lógica de envio do formulário final
-            // Após enviar o formulário final, mostrar o formulário de cotação de passageiros
+            // Coleta dados da segunda etapa do formulário
+            const origin = document.getElementById('origin').value;
+            const destination = document.getElementById('destination').value;
+            const departureDate = document.getElementById('departure-date').value;
+            const returnDate = document.getElementById('return-date').value;
+
+            const finalFormData = {
+                origin,
+                destination,
+                departureDate,
+                returnDate
+            };
+
+            // Envia dados da segunda etapa para HubSpot
+            sendToHubSpot(finalFormData);
+
+            // Mostra o formulário de cotação de passageiros
             document.getElementById('final-form').style.display = 'none';
             document.getElementById('passenger-form').style.display = 'block';
         }
 
         function submitPassengerForm() {
-            // Aqui você pode adicionar qualquer lógica de envio do formulário de passageiros
-            // Após enviar o formulário de passageiros, redirecionar para a página com o mesmo formulário
-            window.location.href = "mesma_pagina.html"; // Altere "mesma_pagina.html" para o nome da sua página atual
+            // Coleta dados da terceira etapa do formulário
+            const adults = document.getElementById('adults').value;
+            const infants = document.getElementById('infants').value;
+            const children = document.getElementById('children').value;
+
+            const passengerFormData = {
+                adults,
+                infants,
+                children
+            };
+
+            // Envia dados da terceira etapa para HubSpot
+            sendToHubSpot(passengerFormData);
+
+            // Redireciona para a mesma página
+            window.location.href = window.location.href;
+        }
+
+        function sendToHubSpot(data) {
+    const apiKey = 'pat-na1-b5ed7300-bf25-4d7a-b8fe-c8d82c9f64c4';
+    const url = `https://api.hubapi.com/contacts/v1/contact?hapikey=${apiKey}`;
+
+    const properties = Object.keys(data).map(key => ({
+        property: key,
+        value: data[key]
+    }));
+
+    axios.post(url, { properties })
+        .then(response => {
+            console.log('Dados enviados para o HubSpot:', response.data);
+        })
+        .catch(error => {
+            console.error('Erro ao enviar dados para o HubSpot:', error);
+        });
+}
+
+
+        function submitInitialForm() {
+            // Coleta dados da primeira etapa do formulário
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+
+            const initialFormData = {
+                name,
+                email,
+                whatsapp
+            };
+
+            // Envia dados da primeira etapa para HubSpot
+            sendToHubSpot(initialFormData);
+
+            // Mostra a próxima seção do formulário
+            showCotacaoSection();
         }
     </script>
 </head>
@@ -35,7 +102,7 @@
         <img src="assets/images/teste.png" alt="Logo" class="logo">
         <h1 class="title">Bem-vindo(a) viajante!</h1>
         <h2 class="subtitle">Preencha as informações para receber um atendimento</h2>
-        
+
         <!-- Formulário Inicial -->
         <div id="initial-form" class="form-container">
             <div class="grid sm:grid-cols-5 gap-4 w-full bg-white/25 backdrop-blur-md p-6 rounded border border-primary border-solid z-10">
@@ -52,7 +119,7 @@
                     <input name="whatsapp" id="whatsapp" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10" placeholder="(11) 90000-0000" value="">
                 </div>
                 <div class="relative flex flex-col gap-1"></div>
-                <button class="btn btn-primary rounded self-end text-white mb-1" onclick="showCotacaoSection()">Próximo</button>
+                <button class="btn btn-primary rounded self-end text-white mb-1" onclick="submitInitialForm()">Próximo</button>
             </div>
         </div>
         
@@ -86,74 +153,69 @@
                     <h2 class="text-xs font-normal text-white text-left">Adultos</h2>
                     <select name="adults" id="adults" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
                         <option value="">Selecione</option>
-                        <option value="1">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <!-- Adicione opções de 1 a 10 para adultos conforme necessário -->
                     </select>
                 </div>
                 <div class="relative flex flex-col gap-1">
                     <h2 class="text-xs font-normal text-white text-left">Bebês (de 0 a 2 anos)</h2>
                     <select name="infants" id="infants" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
                         <option value="">Selecione</option>
-                        <option value="1">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-
-
-                        </select>
-                    </div>
-                    <div class="relative flex flex-col gap-1">
-                        <h2 class="text-xs font-normal text-white text-left">Crianças (até 12 anos)</h2>
-                        <select name="children" id="children" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
-                            <option value="">Selecione</option>
-                            <option value="1">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <!-- Adicione opções de 1 a 10 para crianças conforme necessário -->
-                        </select>
-                    </div>
-                    <button class="btn btn-primary rounded self-end text-white mb-1" onclick="submitPassengerForm()">Solicitar atendimento</button>
+                    </select>
                 </div>
-            </div>
-            <!-- Formulário de Cotação -->
-            <div id="cotacao-form" class="form-container" style="display: none;">
-                <!-- Conteúdo do formulário de cotação -->
+                <div class="relative flex flex-col gap-1">
+                    <h2 class="text-xs font-normal text-white text-left">Crianças (até 12 anos)</h2>
+                    <select name="children" id="children" class="iata input border-primary col-span-1 border w-full text-sm bg-white text-gray-600 max-h-10">
+                        <option value="">Selecione</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary rounded self-end text-white mb-1" onclick="submitPassengerForm()">Solicitar atendimento</button>
             </div>
         </div>
-        
-        <div class="images-section">
-            <img src="assets/images/lg1.png" alt="Imagem 1" class="responsive-image">
-            <img src="assets/images/lg3.png" alt="Imagem 2" class="responsive-image">
-            <img src="assets/images/lg2.png" alt="Imagem 3" class="responsive-image">
-        </div>
-        
-        <footer class="footer">
-            <!-- Rodapé conteúdo aqui -->
-        </footer>
-    </body>
-    </html>
+
+        <script>
+            function submitPassengerForm() {
+                // Coleta dados da terceira etapa do formulário
+                const adults = document.getElementById('adults').value;
+                const infants = document.getElementById('infants').value;
+                const children = document.getElementById('children').value;
+
+                const passengerFormData = {
+                    adults,
+                    infants,
+                    children
+                };
+
+                // Envia dados da terceira etapa para HubSpot
+                sendToHubSpot(passengerFormData);
+
+                // Redireciona para a mesma página
+                window.location.href = window.location.href;
+            }
+        </script>
+    </div>
+
+    <div class="images-section">
+        <img src="assets/images/lg1.png" alt="Imagem 1" class="responsive-image">
+        <img src="assets/images/lg3.png" alt="Imagem 2" class="responsive-image">
+        <img src="assets/images/lg2.png" alt="Imagem 3" class="responsive-image">
+    </div>
+
+    <footer class="footer">
+        <!-- Rodapé conteúdo aqui -->
+    </footer>
+</body>
+</html>
