@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Ofertas de Passagens com Milhas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .quiz-page {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options button,
+        .container > button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #10bf40; /* Cor alterada */
+            color: white;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+        .options button:hover,
+        .container > button:hover {
+            background-color: #0e9f35; /* Tom mais escuro para hover */
+        }
+        .image-container img {
+            max-width: 100%;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz">
+    <!-- Página 1 -->
+    <div id="page1" class="quiz-page active container">
+        <h2>Encontre as melhores ofertas de passagens com milhas baratas</h2>
+        <p>Faça nosso teste rápido e tenha acesso a um grupo exclusivo com promoções de passagens imperdíveis</p>
+        <button onclick="nextPage(2)">COMEÇAR O TESTE GRATUITO</button>
+        <div class="image-container">
+            <img src="/wp-content/uploads/2024/06/img01.png"  alt="Imagem de passagens aéreas">
+        </div>
+    </div>
+
+    <!-- Página 2 -->
+    <div id="page2" class="quiz-page container">
+        <div class="question">Qual é o seu principal objetivo ao usar milhas?</div>
+        <div class="options">
+            <button onclick="nextPage(3)">ECONOMIZAR EM PASSAGENS AÉREAS</button>
+            <button onclick="nextPage(3)">VIAJAR COM MAIS FREQUÊNCIA</button>
+            <button onclick="nextPage(3)">GARANTIR MELHORES OFERTAS</button>
+        </div>
+    </div>
+
+    <!-- Página 3 -->
+    <div id="page3" class="quiz-page container">
+        <div class="question">Com que frequência você viaja?</div>
+        <div class="options">
+            <button onclick="nextPage(4)">MENOS DE 1 VEZ POR ANO</button>
+            <button onclick="nextPage(4)">1 A 3 VEZES POR ANO</button>
+            <button onclick="nextPage(4)">MAIS DE 3 VEZES POR ANO</button>
+        </div>
+    </div>
+
+    <!-- Página 4 -->
+    <div id="page4" class="quiz-page container">
+        <div class="question">Qual o destino que você mais gostaria de visitar com milhas?</div>
+        <div class="options">
+            <button onclick="nextPage(5)">AMÉRICA DO SUL</button>
+            <button onclick="nextPage(5)">EUROPA</button>
+            <button onclick="nextPage(5)">AMÉRICA DO NORTE</button>
+            <button onclick="nextPage(5)">OUTRO DESTINO</button>
+        </div>
+    </div>
+
+    <!-- Página 5 -->
+    <div id="page5" class="quiz-page container">
+        <div class="question">Qual é o valor médio que você costuma gastar em passagens?</div>
+        <div class="options">
+            <button onclick="nextPage(6)">MENOS DE R$ 500</button>
+            <button onclick="nextPage(6)">ENTRE R$ 500 E R$ 1.500</button>
+            <button onclick="nextPage(6)">MAIS DE R$ 1.500</button>
+        </div>
+    </div>
+
+    <!-- Página 6 -->
+    <div id="page6" class="quiz-page container">
+        <div class="question">Você já acumulou milhas antes?</div>
+        <div class="options">
+            <button onclick="nextPage(7)">SIM, TENHO BASTANTE EXPERIÊNCIA</button>
+            <button onclick="nextPage(7)">SIM, MAS AINDA NÃO USEI</button>
+            <button onclick="nextPage(7)">NÃO, SOU NOVATO(A) NESSE TEMA</button>
+        </div>
+    </div>
+
+  <!-- Página 7 -->
+<div id="page7" class="quiz-page container">
+    <div class="question">Com base nas suas respostas…</div>
+    <p>Você está pronto(a) para aproveitar ofertas exclusivas de passagens com milhas baratas!</p>
+    <button onclick="window.location.href='https://zenflytravel.com/pv2'">ACESSAR GRUPO EXCLUSIVO</button>
+</div>
+
+
+<script>
+    function nextPage(pageNumber) {
+        const currentPage = document.querySelector('.quiz-page.active');
+        const nextPage = document.getElementById(`page${pageNumber}`);
+        currentPage.classList.remove('active');
+        nextPage.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
